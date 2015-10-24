@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.tasktracker.operation</groupId>
+        <artifactId>tto-dev-ops-win-deploy</artifactId>
+        <version>15.1.0</version>
+    </parent>
+
+    <artifactId>tto-dev-ops-win-deploy-all</artifactId>
+    <packaging>jar</packaging>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <optimize>true</optimize>
+                    <debug>true</debug>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>exec-maven-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+                <executions>
+                    <execution>
+                        <id>Compile ttl-commons</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>${basedir}/script/compile/modules/compile-ttl-commons.bat</executable>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>Compile tta-api</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>${basedir}/script/compile/modules/compile-tta-api.bat</executable>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>Compile tts-task</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>${basedir}/script/compile/modules/compile-tts-task.bat</executable>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>Compile tts-track</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>${basedir}/script/compile/modules/compile-tts-track.bat</executable>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>Compile ttf-acceptance</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>${basedir}/script/compile/modules/compile-ttf-acceptance.bat</executable>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>Deploy all modules</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>${basedir}/script/deployAll.bat</executable>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

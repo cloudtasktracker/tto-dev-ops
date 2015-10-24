@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.tasktracker.operation</groupId>
+        <artifactId>tto-dev-ops</artifactId>
+        <version>15.1.0</version>
+    </parent>
+
+    <artifactId>tto-dev-ops-unix</artifactId>
+    <packaging>pom</packaging>
+
+    <profiles>
+        <profile>
+            <id>install</id>
+            <modules>
+                <module>tto-dev-ops-unix-install</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>pull</id>
+            <modules>
+                <module>tto-dev-ops-unix-pull</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>deploy</id>
+            <modules>
+                <module>tto-dev-ops-unix-deploy</module>
+            </modules>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <optimize>true</optimize>
+                    <debug>true</debug>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
